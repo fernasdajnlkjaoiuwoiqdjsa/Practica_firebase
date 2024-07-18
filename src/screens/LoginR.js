@@ -1,16 +1,14 @@
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from 'react-native';
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 import { initializeApp } from 'firebase/app';
 import React from 'react';
-import { firebaseConfig } from '../config/firebase';
+import { firebaseConfig, auth } from '../config/firebase';
 
 initializeApp(firebaseConfig);
 
 export default function LoginR({ navigation }) {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
-
-  const auth = getAuth();
 
   const handleSignUp = () => {
     createUserWithEmailAndPassword(auth, email, password)
